@@ -49,13 +49,22 @@
                         <a href="page1.aspx">About</a>
                     </li>
                     <li>
-                        <a href="page2.aspx">Services</a>
-                    </li>
-                    <li>
                         <a href="page3.aspx">Contact</a>
                     </li>
                 </ul>
-   
+
+                <!-- search bar -->
+                
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Shopping Cart
@@ -65,17 +74,23 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        </div>
+        
         <!-- /.container -->
+        
     </nav>
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <!-- Page Content -->
     <div class="container">
 
         <div class="row">
 
             <div class="col-md-3">
-                <p class="lead">Pick of the Critter</p>
+                <p class="lead">Categories</p>
                 <div class="list-group">
                     <a href="page1.aspx" class="list-group-item">Dog</a>
                     <a href="page2.aspx" class="list-group-item">Cat</a>
@@ -85,9 +100,8 @@
                 </div>
             </div>
 
-            <br />
-            <br />
-            <br />
+            <br /><br />
+ 
             <div class="col-md-9">
 
                 <div class="row carousel-holder">
@@ -191,10 +205,10 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt=""/>
+                            <img src="images/blue.jpg" alt=""/>
                             <div class="caption">
-                                <h4 class="pull-right">$84.99</h4>
-                                <h4><a href="#">Fourth Product</a>
+                                <h4 class="pull-right">$19.99</h4>
+                                <h4><a href="#">Blue Adult Dog Food</a>
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
@@ -213,10 +227,10 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt=""/>
+                            <img src="images/simplynourish.jpg" alt=""/>
                             <div class="caption">
-                                <h4 class="pull-right">$94.99</h4>
-                                <h4><a href="#">Fifth Product</a>
+                                <h4 class="pull-right">$15.99</h4>
+                                <h4><a href="#">Simply Nourish Adult Dog Food</a>
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>

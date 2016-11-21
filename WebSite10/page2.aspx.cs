@@ -11,4 +11,9 @@ public partial class _Page2 : Page
     {
 
     }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

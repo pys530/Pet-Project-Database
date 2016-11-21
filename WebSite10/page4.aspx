@@ -3,7 +3,7 @@
 <script runat="server">
       void Button_Click(Object sender, EventArgs e) 
       {
-         Label1.Text = "You selected Product ID: " + 
+         Label1.Text = "You selected Customer ID: " + 
          DropDownList1.SelectedItem.Value + ".";         
       }
 </script>
@@ -11,35 +11,52 @@
 <asp:content id="BodyContent" contentplaceholderid="MainContent" runat="server">
     <!--Associate page4.aspx to the Master Page named Shi.master-->
     <div class="jumbotron">
-        <h2>Page 4</h2>
-        <p class="lead">Page should contain a DropDownList with its options’ values and text populated from two fields in Product table. 
-            Option values should be set to the value of the primary key from the table. DDL should be sorted by text field.</p>
+        <h2>Page 4 - Manage Customer Information</h2>
+        <p class="lead"></p>
 
     <!--Page4.aspx functionality:
         o An option that uses the selected value from the DropDownList control to display all columns of the selected record.-->
-        <label>Select Product:</label>
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="PRODUCT_NAME" 
-            DataValueField="PRODUCT_ID"></asp:DropDownList>
+        <label>Select Customer ID:</label>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="CUSTOMER_ID" 
+            DataValueField="CUSTOMER_ID"></asp:DropDownList>
         &nbsp;
         <asp:Button ID="Button1" Text="Submit" OnClick="Button_Click" runat="server" />
         <br />
         <asp:Label ID="Label1" runat="server" />
 
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="PRODUCT_ID" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CUSTOMER_ID" DataSourceID="SqlDataSource1" AllowSorting="True">
             <Columns>
-                <asp:BoundField DataField="PRODUCT_ID" HeaderText="PRODUCT_ID" ReadOnly="True" SortExpression="PRODUCT_ID" />
-                <asp:BoundField DataField="PRODUCT_NAME" HeaderText="PRODUCT_NAME" SortExpression="PRODUCT_NAME" />
-                <asp:BoundField DataField="MANUFACTURER" HeaderText="MANUFACTURER" SortExpression="MANUFACTURER" />
-                <asp:BoundField DataField="QUANTITY" HeaderText="QUANTITY" SortExpression="QUANTITY" />
-                <asp:BoundField DataField="UNIT_PRICE" HeaderText="UNIT_PRICE" SortExpression="UNIT_PRICE" />
-                <asp:BoundField DataField="UNIT_WEIGHT" HeaderText="UNIT_WEIGHT" SortExpression="UNIT_WEIGHT" />
-                <asp:BoundField DataField="SUBCATEGORY_ID" HeaderText="SUBCATEGORY_ID" SortExpression="SUBCATEGORY_ID">
-                    <ControlStyle Font-Size="Small" />
+                <asp:BoundField DataField="CUSTOMER_ID" HeaderText="CUSTOMER_ID" ReadOnly="True" SortExpression="CUSTOMER_ID" />
+                <asp:BoundField DataField="FIRST_NAME" HeaderText="FIRST_NAME" SortExpression="FIRST_NAME" />
+                <asp:BoundField DataField="LAST_NAME" HeaderText="LAST_NAME" SortExpression="LAST_NAME" />
+                <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL">
                 </asp:BoundField>
+                <asp:BoundField DataField="USERNAME" HeaderText="USERNAME" SortExpression="USERNAME" />
+                <asp:BoundField DataField="BILLING_ADDRESS" HeaderText="BILLING_ADDRESS" SortExpression="BILLING_ADDRESS" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:fall16_g3ConnectionString2 %>" SelectCommand="SELECT DISTINCT [PRODUCT_ID], [PRODUCT_NAME], [MANUFACTURER], [QUANTITY], [UNIT_PRICE], [UNIT_WEIGHT], [SUBCATEGORY_ID], [CATEGORY_ID] FROM [PRODUCT] ORDER BY [PRODUCT_NAME]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:fall16_g3ConnectionString2 %>" SelectCommand="SELECT [CUSTOMER_ID], [FIRST_NAME], [LAST_NAME], [EMAIL], [USERNAME], [BILLING_ADDRESS] FROM [CUSTOMER]" DeleteCommand="DELETE FROM [CUSTOMER] WHERE [CUSTOMER_ID] = @CUSTOMER_ID" InsertCommand="INSERT INTO [CUSTOMER] ([CUSTOMER_ID], [FIRST_NAME], [LAST_NAME], [EMAIL], [USERNAME], [BILLING_ADDRESS]) VALUES (@CUSTOMER_ID, @FIRST_NAME, @LAST_NAME, @EMAIL, @USERNAME, @BILLING_ADDRESS)" UpdateCommand="UPDATE [CUSTOMER] SET [FIRST_NAME] = @FIRST_NAME, [LAST_NAME] = @LAST_NAME, [EMAIL] = @EMAIL, [USERNAME] = @USERNAME, [BILLING_ADDRESS] = @BILLING_ADDRESS WHERE [CUSTOMER_ID] = @CUSTOMER_ID">
+            <DeleteParameters>
+                <asp:Parameter Name="CUSTOMER_ID" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="CUSTOMER_ID" Type="Int32" />
+                <asp:Parameter Name="FIRST_NAME" Type="String" />
+                <asp:Parameter Name="LAST_NAME" Type="String" />
+                <asp:Parameter Name="EMAIL" Type="String" />
+                <asp:Parameter Name="USERNAME" Type="String" />
+                <asp:Parameter Name="BILLING_ADDRESS" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="FIRST_NAME" Type="String" />
+                <asp:Parameter Name="LAST_NAME" Type="String" />
+                <asp:Parameter Name="EMAIL" Type="String" />
+                <asp:Parameter Name="USERNAME" Type="String" />
+                <asp:Parameter Name="BILLING_ADDRESS" Type="String" />
+                <asp:Parameter Name="CUSTOMER_ID" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
 
 
 
